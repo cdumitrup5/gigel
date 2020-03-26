@@ -1,0 +1,17 @@
+on:
+  push:
+    branches:
+    - 'master'
+jobs:
+  push_to_code_commit:
+    runs-on: ubuntu-latest
+    name: Job to push code to code commit
+    steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Push to code commit action step
+        env: # Set the secret as an input
+          cc_user: ${{ secrets.CODE_COMMIT_USER_PROD }}
+          cc_pass: ${{ secrets.CODE_COMMIT_PASS_PROD }}
+        uses: ./ # Uses an action in the root directory

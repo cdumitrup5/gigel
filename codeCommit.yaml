@@ -1,0 +1,6 @@
+# codeCommit.yml action file
+name: 'Push to CodeCommit'
+description: 'push to aws test code commit'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
