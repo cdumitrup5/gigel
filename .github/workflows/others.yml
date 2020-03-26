@@ -1,7 +1,7 @@
 on:
   push:
-    branches:
-    - '!master'
+    branches-ignore:
+    - 'master'
 jobs:
   push_to_code_commit:
     runs-on: ubuntu-latest
