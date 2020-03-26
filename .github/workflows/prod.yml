@@ -1,5 +1,7 @@
-on: [push]
-
+on:
+  push:
+    branches:
+    - 'master'
 jobs:
   push_to_code_commit:
     runs-on: ubuntu-latest
@@ -10,6 +12,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Push to code commit action step
         env: # Set the secret as an input
-          cc_user: ${{ secrets.CODE_COMMIT_USER }}
-          cc_pass: ${{ secrets.CODE_COMMIT_PASS }}
+          cc_user: ${{ secrets.CODE_COMMIT_USER_PROD }}
+          cc_pass: ${{ secrets.CODE_COMMIT_PASS_PROD }}
         uses: ./ # Uses an action in the root directory
