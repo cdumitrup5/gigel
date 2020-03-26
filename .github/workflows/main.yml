@@ -1,18 +1,15 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  push_to_code_commit:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Job to push code to code commit
     steps:
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
+      - name: Push to code commit action step
+        env: # Set the secret as an input
+          cc_user: ${{ secrets.CODE_COMMIT_USER }}
+          cc_pass: ${{ secrets.CODE_COMMIT_PASS }}
         uses: ./ # Uses an action in the root directory
-        id: hello
-        with:
-          who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"

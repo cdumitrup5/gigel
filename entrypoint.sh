@@ -1,5 +1,4 @@
 #!/bin/sh -l
 
-echo "Helloooooooo $1"
-time=$(date)
-echo "::set-output name=time::$time"
+git remote add tempbranch https://${cc_user}:${cc_pass}@git-codecommit.eu-west-1.amazonaws.com/v1/repos/gigel
+git push -f tempbranch $(git rev-parse --abbrev-ref HEAD):master
